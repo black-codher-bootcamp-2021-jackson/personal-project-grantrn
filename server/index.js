@@ -1,28 +1,32 @@
-require("dotenv").config();
-
 const express = require("express");
-const mongoose = require("mongoose");
-const bodyParser = require("body-parser");
-
-// IMPORT YOUR SCHEMAS HERE
-require("./models/Profiles"); //This is just an example. Don't forget to delete this
-
 const app = express();
+const mongoose = require("mongoose");
+const dotenv = require("dotenv");
+const helmet = require("helmet"); // improve securtity of http headers
+const morgan = require("morgan"); //see what requests have been performed in the terminal
+const userRoute = require("./routes/users");
+// const authRoute = require("./routes/auth");
 
-// This is where your API is making its initial connection to the database
-mongoose.Promise = global.Promise;
-mongoose.connect(process.env.DATABASE_CONNECTION_STRING, {
-  useNewUrlParser: true,
-});
+dotenv.config();
+//CONNECTING TO DATABASE
+mongoose.connect(
+  process.env.MONGO_URL,
+  {
+    useNewUrlParser: true,
+  },
+  () => {
+    console.log("connected to mongodb");
+  }
+);
 
-app.use(bodyParser.json());
+//middleware
+app.use(express.json()); //parse requests
+app.use(helmet());
+app.use(morgan("common"));
 
-// IMPORT YOUR API ROUTES HERE
-// Below is just an example. Don't forget to delete it. 
-// It's importing and using everything from the profilesRoutes.js file and also passing app as a parameter for profileRoutes to use
-require("./routes/profilesRoutes")(app); 
+app.use("/api/users", userRoute); //address of restapi
+// app.use("/api/auth", authRoute);
 
-const PORT = process.env.PORT;
-app.listen(PORT, () => {
-  console.log(`API running on port ${PORT}`);
+app.listen(8080, () => {
+  console.log("backend sever is running");
 });
