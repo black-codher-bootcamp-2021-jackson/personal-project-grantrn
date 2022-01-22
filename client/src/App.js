@@ -1,5 +1,10 @@
+import "./styles/App.css";
+import MyRoutes from "./components/Routes";
+
 function App() {
-  return <div>hello</div>;
+  return (
+    <MyRoutes />
+  );
 }
 
 export default App;
