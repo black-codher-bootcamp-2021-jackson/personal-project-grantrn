@@ -1,9 +1,11 @@
 import Header from "../components/Header";
+import Profile from "./Profile";
 
 const Home = () => {
   return (
     <>
-    <Header/>
+      <Header />
+      <Profile />
       <p>Hello this is the homepage</p>
     </>
   );

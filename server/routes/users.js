@@ -3,7 +3,6 @@
 const router = require("express").Router();
 const User = require("../models/User");
 
-
 //REGISTER
 router.post("/register", (req, res) => {
   const newUser = new User({
@@ -33,6 +32,35 @@ router.post("/login", async (req, res) => {
 });
 
 //UPDATE USER
+router.put("/:id", async (req, res) => {
+  if (req.body.userId === req.params.id || req.body.isAdmin) {
+    try {
+      const user = await User.findByIdAndUpdate(req.params.id, {
+        $set: req.body,
+      });
+      res.status(200).send("Account has been updated");
+    } catch (err) {
+      return res.status(400);
+    }
+  } else {
+    return res.status(403).send("You can update only your account!");
+  }
+});
+//UPDATE CR BOOK
+router.patch("/:id/currently", async (req, res) => {
+  if (req.body.userId === req.params.id || req.body.isAdmin) {
+    try {
+      const user = await User.findByIdAndUpdate(req.params.id, {
+        $push: req.body,
+      });
+      res.status(200).send("Book has been updated");
+    } catch (err) {
+      return res.status(400);
+    }
+  } else {
+    return res.status(403).send("You can update only your account!");
+  }
+});
 
 //DELETE USER
 
