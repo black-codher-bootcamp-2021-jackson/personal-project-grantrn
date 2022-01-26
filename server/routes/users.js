@@ -62,6 +62,17 @@ router.patch("/:id/currently", async (req, res) => {
   }
 });
 
+// GET CURRENTLY READING
+router.get("/:id", async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id);
+    const currentBooks = user.currentBooks;
+    res.status(200).send(currentBooks);
+  } catch (err) {
+    res.status(400);
+  }
+});
+
 //DELETE USER
 
 // GET A USER

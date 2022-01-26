@@ -1,5 +1,5 @@
 import Header from "../components/Header";
-import Profile from "./Profile";
+import Profile from "../components/Profile";
 
 const Home = () => {
   return (

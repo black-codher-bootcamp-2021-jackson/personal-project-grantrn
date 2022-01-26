@@ -1,10 +1,10 @@
-import CurrentlyReading from '../components/CurrentlyReading'
+import CurrentlyReading from "./CurrentlyReading";
 
 const Profile = () => {
   return (
     <>
-      <span>i am profile page</span>
       <CurrentlyReading />
+      <span>i am profile page</span>
     </>
   );
 };
