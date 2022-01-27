@@ -3,6 +3,9 @@
 const router = require("express").Router();
 const User = require("../models/User");
 
+//TEST
+router.get('/test', (req, res) => res.send('route testing!'));
+
 //REGISTER
 router.post("/register", (req, res) => {
   const newUser = new User({
@@ -62,8 +65,18 @@ router.patch("/:id/currently", async (req, res) => {
   }
 });
 
+//GET A USER
+router.get("/:id/", async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id);
+    res.status(200).send(user);
+  } catch (err) {
+    res.status(400);
+  }
+});
+
 // GET CURRENTLY READING
-router.get("/:id", async (req, res) => {
+router.get("/:id/currently", async (req, res) => {
   try {
     const user = await User.findById(req.params.id);
     const currentBooks = user.currentBooks;

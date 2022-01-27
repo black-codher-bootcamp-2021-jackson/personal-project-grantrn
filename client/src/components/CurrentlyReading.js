@@ -6,7 +6,7 @@ const CurrentlyReading = () => {
 
   useEffect(() => {
     const fetchCurrently = async () => {
-      const res = await axios.get("/users/61eaa5b9f16a68e95fd91dd1");
+      const res = await axios.get("/users/61eaa5b9f16a68e95fd91dd1/currently");
       console.log(res.data);
       setCurrently(res.data);
     };
