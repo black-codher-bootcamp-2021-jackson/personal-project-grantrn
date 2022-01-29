@@ -26,7 +26,7 @@ const Book = ({ book, addToCurrently }) => {
         </p>
       </div>
       <div>
-        <button className="add-button" onClick={() => addToCurrently(id)}>
+        <button className="add-button" onClick={() => addToCurrently(book)}>
           Add to currently reading
         </button>
       </div>

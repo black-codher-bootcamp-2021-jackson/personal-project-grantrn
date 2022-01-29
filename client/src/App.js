@@ -15,18 +15,15 @@ function App() {
       setBooks(results.items);
     }
   }
-  const addToCurrently = (id) => {
+  const addToCurrently = async (book) => {
     console.log("hello add to currently");
     try {
-      const res = axios.patch(`users/${user._id}/currently`, id);
-      console.log(res.data);
+      const res = await axios.patch(`users/${user._id}/currently`, book);
+      console.log(book);
+      console.log(res);
     } catch (err) {
       console.log(err);
     }
-  };
-  const addToBasket = (product) => {
-    console.log(product);
-    console.log("hello add to basket");
   };
 
   return (
@@ -36,7 +33,6 @@ function App() {
         findBooks={findBooks}
         books={books}
         addToCurrently={addToCurrently}
-        addToBasket={addToBasket}
       />
     </>
   );
