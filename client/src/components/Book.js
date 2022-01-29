@@ -1,6 +1,6 @@
 import React from "react";
 
-const Book = ({ book}) => {
+const Book = ({ book, addToCurrently }) => {
   //Nested Destructuring
   const {
     id,
@@ -11,33 +11,24 @@ const Book = ({ book}) => {
       imageLinks: { thumbnail },
     },
   } = book;
- 
 
   return (
     <div className="book">
       <img src={thumbnail} alt={title} />
       <div>
-        <h2 title={title}>
-         
-        </h2>
+        <h2 title={title}></h2>
         <p className="author">
           by {authors ? authors.join(", ") : "No Authors Listed"}
         </p>
-        
+
         <p className="description">
-          {description
-            ? description
-            : "No description"}
+          {description ? description : "No description"}
         </p>
       </div>
       <div>
-          <button
-            className="add-button"
-           
-          >
-            + Add
-          </button>
-        
+        <button className="add-button" onClick={() => addToCurrently(id)}>
+          Add to currently reading
+        </button>
       </div>
     </div>
   );

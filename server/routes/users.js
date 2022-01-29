@@ -4,7 +4,7 @@ const router = require("express").Router();
 const User = require("../models/User");
 
 //TEST
-router.get('/test', (req, res) => res.send('route testing!'));
+router.get("/test", (req, res) => res.send("route testing!"));
 
 //REGISTER
 router.post("/register", (req, res) => {
@@ -51,17 +51,13 @@ router.put("/:id", async (req, res) => {
 });
 //UPDATE CR BOOK
 router.patch("/:id/currently", async (req, res) => {
-  if (req.body.userId === req.params.id || req.body.isAdmin) {
-    try {
-      const user = await User.findByIdAndUpdate(req.params.id, {
-        $push: req.body,
-      });
-      res.status(200).send("Book has been updated");
-    } catch (err) {
-      return res.status(400);
-    }
-  } else {
-    return res.status(403).send("You can update only your account!");
+  try {
+    await User.findByIdAndUpdate(req.params.id, {
+      $push: req.body,
+    });
+    res.status(200).send("Book has been updated");
+  } catch (err) {
+    return res.status(400);
   }
 });
 

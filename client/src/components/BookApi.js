@@ -1,13 +1,13 @@
 import React from "react";
 import Book from "./Book";
 
+const BookList = ({ books, addToCurrently}) => {
 
-const BookList = ({ books}) => {
   return (
     <div className="list">
       <div>
         {books.map((book) => (
-          <Book key={book.id} book={book}  />
+          <Book key={book.id} book={book} addToCurrently={addToCurrently}/>
         ))}
       </div>
     </div>
