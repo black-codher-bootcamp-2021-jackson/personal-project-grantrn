@@ -1,12 +1,14 @@
 import Header from "../components/Header";
 import Profile from "../components/Profile";
+import Search from '../components/Search'
 
 
-const Home = () => {
+const Home = ({addToRead, findBooks}) => {
   return (
     <>
       <Header />
-      <Profile />
+      <Search findBooks={findBooks}/>
+      <Profile addToRead={addToRead}/>
       
       <p>Hello this is the homepage</p>
     </>

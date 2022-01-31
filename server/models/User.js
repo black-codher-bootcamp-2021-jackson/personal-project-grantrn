@@ -11,6 +11,8 @@ const UserSchema = new mongoose.Schema(
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true, min: 5 },
     currentBooks: {type:Array},
+    wantToRead:{type:Array},
+    read:{type:Array},
 
     // profilePicture: { type: String, default: "" },
     // followers:{type:Array, default:[]},

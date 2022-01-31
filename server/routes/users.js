@@ -49,17 +49,6 @@ router.put("/:id", async (req, res) => {
     return res.status(403).send("You can update only your account!");
   }
 });
-//UPDATE CR BOOK
-router.patch("/:id/currently", async (req, res) => {
-  try {
-    await User.findByIdAndUpdate(req.params.id, {
-      $push: req.body,
-    });
-    res.status(200).send("Book has been updated");
-  } catch (err) {
-    return res.status(400);
-  }
-});
 
 //GET A USER
 router.get("/:id/", async (req, res) => {
@@ -68,6 +57,18 @@ router.get("/:id/", async (req, res) => {
     res.status(200).send(user);
   } catch (err) {
     res.status(400);
+  }
+});
+
+//UPDATE CURRENTLY READING BOOK
+router.patch("/:id/currently", async (req, res) => {
+  try {
+    await User.findByIdAndUpdate(req.params.id, {
+      $push: req.body,
+    });
+    res.status(200).send("Book has been updated");
+  } catch (err) {
+    return res.status(400);
   }
 });
 
@@ -82,12 +83,30 @@ router.get("/:id/currently", async (req, res) => {
   }
 });
 
-//DELETE USER
+//UPDATE WANT TO READ
+router.patch("/:id/want", async (req, res) => {
+  try {
+    const user = await User.findByIdAndUpdate(req.params.id, {
+      $push: req.body,
+    });
+    res.status(200).send("Book has been updated");
+  } catch (err) {
+    return res.status(400);
+  }
+});
 
-// GET A USER
+//ADD TO READ
+router.patch("/:id/read", async (req, res) => {
+  try {
+    await User.findByIdAndUpdate(req.params.id, {
+      $push: req.body,
+    });
+    res.status(200).send("Book has been updated");
+  } catch (err) {
+    return res.status(400);
+  }
+});
 
-// FOLLOW A USER
 
-// UNFOLLOW A USER
 
 module.exports = router;
