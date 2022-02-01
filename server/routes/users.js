@@ -87,7 +87,7 @@ router.get("/:id/currently", async (req, res) => {
 router.patch("/:id/want", async (req, res) => {
   try {
     const user = await User.findByIdAndUpdate(req.params.id, {
-      $push: req.body,
+      $pull: req.body,
     });
     res.status(200).send("Book has been updated");
   } catch (err) {
@@ -97,16 +97,17 @@ router.patch("/:id/want", async (req, res) => {
 
 //ADD TO READ
 router.patch("/:id/read", async (req, res) => {
+  console.log(req.body);
+  //u[pdate many??
   try {
     await User.findByIdAndUpdate(req.params.id, {
       $push: req.body,
+      $pull: { currentBooks: req.body.read },
     });
     res.status(200).send("Book has been updated");
   } catch (err) {
     return res.status(400);
   }
 });
-
-
 
 module.exports = router;

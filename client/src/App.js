@@ -7,11 +7,13 @@ import axios from "axios";
 function App() {
   const { user } = useContext(AuthContext);
   const [books, setBooks] = useState([]);
+
   console.log(books);
 
   async function findBooks(value) {
     const url = `https://www.googleapis.com/books/v1/volumes?q=${value}`;
     const results = await fetch(url).then((res) => res.json());
+    console.log(results);
     if (!results.error) {
       setBooks(results.items);
     }
@@ -35,6 +37,7 @@ function App() {
       });
     } catch (err) {
       console.log(err);
+    } finally {
     }
   };
 

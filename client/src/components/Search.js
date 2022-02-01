@@ -5,9 +5,10 @@ const Search = (props) => {
   const navigate = useNavigate();
   const handleSubmit = (event) => {
     console.log("i am submitting");
+    console.log(props.keyword);
     event.preventDefault();
     props.findBooks(props.keyword);
-    navigate("/search")
+    navigate("/search");
   };
   return (
     <div className="search">

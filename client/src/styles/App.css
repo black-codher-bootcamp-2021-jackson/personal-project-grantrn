@@ -50,7 +50,7 @@
 
 .search {
   position: absolute;
-  top: 7px;
+  top: 45px;
   right: 5px;
 }
 
@@ -68,8 +68,26 @@
 
 .thumbnail {
   border: 3px solid black;
+  width: 100px;
+  height: 150px;
+  object-fit: cover;
+  padding: 1px;
+  margin: 5px;
 }
 
 .button {
   width: 100px;
+}
+
+.description {
+  float: right;
+  text-align: justify;
+}
+
+@media only screen and (max-width: 768px) {
+  .search {
+    position: relative;
+    top: 0px;
+    float: right;
+  }
 }
