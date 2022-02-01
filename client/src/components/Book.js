@@ -22,12 +22,12 @@ const Book = ({
   // } = book;
 
   return (
-    <div className="book">
-      <img src={thumbnail} alt={title} />
+    <div className="list">
+      <img src={thumbnail} alt={title} className="thumbnail"/>
       <div>
         <h2 title={title}></h2>
         <p className="author">
-          by {authors ? authors.join(", ") : "No Authors Listed"}
+          {authors}
         </p>
 
         <p className="description">
@@ -38,13 +38,13 @@ const Book = ({
       <div>
         {addToCurrently ? (
           <>
-            <button className="add-button" onClick={() => addToCurrently(book)}>
+            <button className="button" onClick={() => addToCurrently(book)}>
               Add to currently reading
             </button>
-            <button onClick={() => addToWant(book)}>Add to want to read</button>
+            <button className="button" onClick={() => addToWant(book)}>Add to want to read</button>
           </>
         ) : (
-          <button onClick={() => addToRead(book)}>Add to Read </button>
+          <button className="button"onClick={() => addToRead(book)}>Add to Read </button>
         )}
       </div>
     </div>

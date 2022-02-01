@@ -10,7 +10,7 @@ const Search = (props) => {
     navigate("/search")
   };
   return (
-    <div>
+    <div className="search">
       <form onSubmit={handleSubmit}>
         <label>
           Book name:

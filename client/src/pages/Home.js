@@ -10,7 +10,7 @@ const Home = ({addToRead, findBooks}) => {
       <Search findBooks={findBooks}/>
       <Profile addToRead={addToRead}/>
       
-      <p>Hello this is the homepage</p>
+  
     </>
   );
 };

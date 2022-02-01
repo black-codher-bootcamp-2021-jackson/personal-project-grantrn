@@ -8,29 +8,28 @@ const Profile = ({ addToRead }) => {
 
   return (
     <>
-      <span>i am {user.username}'s profile page</span>
-
-      <div className="currently reading">
-        <h4>Currently Reading</h4>
+    
+      {/* <span>i am {user.username}'s profile page</span> */}
+      <h4 className="subtitle">Currently Reading</h4>
+      <div className="list">
         {user.currentBooks.map((book) => (
           <div>
             {/* <p>{book.title}</p> */}
             {/* <p>{book.volumeInfo.publisher}</p> */}
-
             <Book
               key={book.id}
               book={book}
               // addToCurrently={addToCurrently}
               title={book.volumeInfo.title}
-              thumbnail={book.volumeInfo.imageLinks} //how to get pic to show
-              authors={book.volumeInfo.authors}
+              thumbnail={book.volumeInfo.imageLinks.thumbnail}
+              
               addToRead={addToRead}
             />
           </div>
         ))}
       </div>
-      <div className="want to read">
-        <h4>Want To Read</h4>
+      <h4 className="subtitle">Want To Read</h4>
+      <div className="list">
         {user.wantToRead.map((book) => (
           <div>
             {/* <p>{book.title}</p> */}
@@ -41,15 +40,15 @@ const Profile = ({ addToRead }) => {
               book={book}
               // addToCurrently={addToCurrently}
               title={book.volumeInfo.title}
-              thumbnail={book.volumeInfo.imageLinks} //how to get pic to show
-              authors={book.volumeInfo.authors}
+              thumbnail={book.volumeInfo.imageLinks.thumbnail}
+            
               addToRead={addToRead}
             />
           </div>
         ))}
       </div>
-      <div className="Read">
-        <h4>Read</h4>
+      <h4 className="subtitle">Read</h4>
+      <div className="list">
         {user.read.map((book) => (
           <div>
             {/* <p>{book.title}</p> */}
@@ -60,8 +59,8 @@ const Profile = ({ addToRead }) => {
               book={book}
               // addToCurrently={addToCurrently}
               title={book.volumeInfo.title}
-              thumbnail={book.volumeInfo.imageLinks} //how to get pic to show
-              authors={book.volumeInfo.authors}
+              thumbnail={book.volumeInfo.imageLinks.thumbnail}
+             
             />
           </div>
         ))}

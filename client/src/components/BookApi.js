@@ -27,7 +27,7 @@ const BookList = ({ books, addToCurrently, addToWant }) => {
               book={book}
               addToCurrently={addToCurrently}
               title={book.volumeInfo.title}
-              thumbnail={book.volumeInfo.imageLinks} //how to get pic to show
+              thumbnail={book.volumeInfo.imageLinks.thumbnail}
               authors={book.volumeInfo.authors}
               description={book.volumeInfo.description}
               addToWant={addToWant}
