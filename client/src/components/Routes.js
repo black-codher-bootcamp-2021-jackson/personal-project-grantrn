@@ -9,7 +9,13 @@ import Search from "./Search";
 import Booklist from "./BookApi";
 import Test from "./Test";
 
-const MyRoutes = ({ findBooks, books, addToCurrently, addToRead, addToWant }) => {
+const MyRoutes = ({
+  findBooks,
+  books,
+  addToCurrently,
+  addToRead,
+  addToWant,
+}) => {
   const { user } = useContext(AuthContext); //returns current context value. determined by value prop of AuthContext.Provider
   console.log(user);
   return (
@@ -20,18 +26,23 @@ const MyRoutes = ({ findBooks, books, addToCurrently, addToRead, addToWant }) =>
         <Route path="/register" element={<Register />} />
         {user && (
           <Route
-            path="/profile/:id"
+            path="/"
             element={
               <>
-                <Home addToRead={addToRead}findBooks={findBooks}/>
-                
+                <Home addToRead={addToRead} findBooks={findBooks} />
               </>
             }
           />
         )}
         <Route
           path="/search"
-          element={<Booklist books={books} addToCurrently={addToCurrently} addToWant={addToWant} />}
+          element={
+            <Booklist
+              books={books}
+              addToCurrently={addToCurrently}
+              addToWant={addToWant}
+            />
+          }
         />
       </Routes>
     </Router>

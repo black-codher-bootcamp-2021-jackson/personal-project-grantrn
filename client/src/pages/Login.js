@@ -20,7 +20,7 @@ const Login = () => {
   };
   useEffect(() => {
     if (user) {
-      navigate("/profile/:id");
+      navigate("/");
     }
   }, [user]);
 

@@ -1,14 +1,17 @@
 import "./styles/App.css";
 import MyRoutes from "./components/Routes";
 import { AuthContext } from "./context/AuthContext";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import axios from "axios";
+import Profile from "./components/Profile";
 
 function App() {
   const { user } = useContext(AuthContext);
   const [books, setBooks] = useState([]);
 
-  console.log(books);
+  function refreshPage() {
+    window.location.reload(false);
+  }
 
   async function findBooks(value) {
     const url = `https://www.googleapis.com/books/v1/volumes?q=${value}`;
@@ -38,6 +41,7 @@ function App() {
     } catch (err) {
       console.log(err);
     } finally {
+      refreshPage();
     }
   };
 
