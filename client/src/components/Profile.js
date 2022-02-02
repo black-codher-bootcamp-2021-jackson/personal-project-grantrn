@@ -2,8 +2,9 @@ import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import Book from "./Book";
 
-const Profile = ({ addToRead }) => {
+const Profile = ({ addToRead, addToCurrently }) => {
   const { user } = useContext(AuthContext);
+  const display = true;
 
   return (
     <>
@@ -30,13 +31,13 @@ const Profile = ({ addToRead }) => {
               book={book}
               title={book.volumeInfo.title}
               thumbnail={book.volumeInfo.imageLinks.thumbnail}
-              addToRead={addToRead}
+              addToCurrently={addToCurrently}
             />
           </div>
         ))}
       </div>
       <h4 className="subtitle">Read</h4>
-      <div className="list">
+      <div className="list-read">
         {user.read.map((book) => (
           <div>
             <Book
@@ -44,6 +45,7 @@ const Profile = ({ addToRead }) => {
               book={book}
               title={book.volumeInfo.title}
               thumbnail={book.volumeInfo.imageLinks.thumbnail}
+              display={display}
             />
           </div>
         ))}

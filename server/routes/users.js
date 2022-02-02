@@ -2,19 +2,28 @@
 
 const router = require("express").Router();
 const User = require("../models/User");
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
 //TEST
 router.get("/test", (req, res) => res.send("route testing!"));
 
 //REGISTER
-router.post("/register", (req, res) => {
-  const newUser = new User({
-    username: req.body.username,
-    email: req.body.email,
-    password: req.body.password,
-  });
+router.post("/register", async (req, res) => {
   try {
-    const user = newUser.save();
+    //generate new password
+    const salt = await bcrypt.genSalt(10); //A salt is a random string. By hashing a plain text password plus a salt, the hash algorithm’s output is no longer predictable. The same password will no longer yield the same hash.
+    const hashedPassword = await bcrypt.hash(req.body.password, salt);
+
+    //create new user
+    const newUser = new User({
+      username: req.body.username,
+      email: req.body.email,
+      password: hashedPassword,
+    });
+
+    //save user and respond
+    const user = await newUser.save();
     res.send(newUser);
   } catch (err) {
     console.log(err);
@@ -25,12 +34,17 @@ router.post("/register", (req, res) => {
 router.post("/login", async (req, res) => {
   const user = await User.findOne({ email: req.body.email });
   if (!user) {
-    return res.status(404).send("User not found"); // have to add return statement otherwise settingt header error
-  } // if don't have async and await then only password is checked
-  const correct_password = req.body.password === user.password;
-  if (correct_password === false) {
-    return res.status(400).send("Incorrect password"); // have to add return statement otherwise settingt header error
+    return res.status(404).send("user not found");
   }
+
+  const correctPassword = await bcrypt.compare(
+    req.body.password,
+    user.password
+  );
+  if (!correctPassword) {
+    return res.status(400).send("wrong password");
+  }
+
   res.status(200).send(user);
 });
 

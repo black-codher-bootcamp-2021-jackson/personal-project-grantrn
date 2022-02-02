@@ -12,7 +12,7 @@ function App() {
   function refreshPage() {
     window.location.reload(false);
   }
-
+  //move into apicalls
   async function findBooks(value) {
     const url = `https://www.googleapis.com/books/v1/volumes?q=${value}`;
     const results = await fetch(url).then((res) => res.json());

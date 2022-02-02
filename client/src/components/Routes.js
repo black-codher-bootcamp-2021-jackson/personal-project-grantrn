@@ -29,7 +29,11 @@ const MyRoutes = ({
             path="/"
             element={
               <>
-                <Home addToRead={addToRead} findBooks={findBooks} />
+                <Home
+                  addToRead={addToRead}
+                  findBooks={findBooks}
+                  addToCurrently={addToCurrently}
+                />
               </>
             }
           />

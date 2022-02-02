@@ -6,7 +6,7 @@ const BookList = ({ books, addToCurrently, addToWant }) => {
   function GoBack() {
     const navigate = useNavigate();
     function handleClick() {
-      navigate("/profile/:id");
+      navigate("/");
     }
     return (
       <div>
