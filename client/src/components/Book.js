@@ -10,6 +10,7 @@ const Book = ({
   addToRead,
   addToWant,
   display,
+  profileRead,
 }) => {
   return (
     <div className="container">
@@ -35,7 +36,13 @@ const Book = ({
               <button className="button" onClick={() => addToWant(book)}>
                 Add to want to read
               </button>
-              <button className="button" onClick={() => addToRead(book)}>
+              <button
+                className="button"
+                onClick={() => {
+                  addToRead(book);
+                  profileRead(book);
+                }}
+              >
                 Add to Read{" "}
               </button>
             </div>

@@ -2,7 +2,7 @@ import { React, useEffect } from "react";
 import Book from "./Book";
 import { useNavigate, Navigate, Link } from "react-router";
 
-const BookList = ({ books, addToCurrently, addToWant }) => {
+const BookList = ({ books, addToCurrently, addToWant, addToRead }) => {
   function GoBack() {
     const navigate = useNavigate();
     function handleClick() {
@@ -31,6 +31,7 @@ const BookList = ({ books, addToCurrently, addToWant }) => {
               authors={book.volumeInfo.authors}
               description={book.volumeInfo.description}
               addToWant={addToWant}
+              addToRead={addToRead}
             />
           ))}
         </div>

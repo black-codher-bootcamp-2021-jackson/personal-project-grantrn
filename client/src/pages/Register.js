@@ -3,14 +3,14 @@ import { React, useRef, useContext } from "react";
 import axios from "axios";
 import { loginCall } from "../apiCalls";
 import { AuthContext } from "../context/AuthContext";
-import {useNavigate} from 'react-router'
+import { useNavigate } from "react-router";
 
 const Register = () => {
   const username = useRef(); // preserves data during render cycle, like useState but doesnt have updater func
   const email = useRef();
   const password = useRef();
   const passwordAgain = useRef();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleClick = async (e) => {
     e.preventDefault();
@@ -31,11 +31,11 @@ const Register = () => {
     }
   };
 
-    // loginCall(
-    //   { email: email.current.value, password: password.current.value },
-    //   dispatch
-    // );
-  
+  // loginCall(
+  //   { email: email.current.value, password: password.current.value },
+  //   dispatch
+  // );
+
   return (
     <>
       <div className="login">

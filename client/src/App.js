@@ -24,7 +24,7 @@ function App() {
   const addToCurrently = async (id) => {
     console.log("hello add to currently");
     try {
-      const res = await axios.patch(`users/${user._id}/currently`, {
+      const res = await axios.patch(`users/${user.user._id}/currently`, {
         currentBooks: id,
       });
     } catch (err) {
@@ -35,13 +35,11 @@ function App() {
   const addToRead = async (id) => {
     console.log("hello add to read");
     try {
-      const res = await axios.patch(`/users/${user._id}/read`, {
+      const res = await axios.patch(`/users/${user.user._id}/read`, {
         read: id,
       });
     } catch (err) {
       console.log(err);
-    } finally {
-      refreshPage();
     }
   };
 

@@ -4,6 +4,7 @@ const router = require("express").Router();
 const User = require("../models/User");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const dotenv = require("dotenv");
 
 //TEST
 router.get("/test", (req, res) => res.send("route testing!"));
@@ -41,11 +42,27 @@ router.post("/login", async (req, res) => {
     req.body.password,
     user.password
   );
+  if (user) {
+    const token = jwt.sign(
+      {
+        email: user.email,
+        userId: user._id,
+      },
+      process.env.JWT_KEY,
+      {
+        expiresIn: "1h",
+      }
+    );
+    return res.status(200).json({
+      message: "Auth successful",
+      token: token,
+      user: user,
+    });
+  }
+
   if (!correctPassword) {
     return res.status(400).send("wrong password");
   }
-
-  res.status(200).send(user);
 });
 
 //UPDATE USER
