@@ -15,12 +15,13 @@ const MyRoutes = ({
   addToWant,
 }) => {
   const { user } = useContext(AuthContext); //returns current context value. determined by value prop of AuthContext.Provider
+
   console.log("routes", user);
   return (
     <Router>
       <Routes>
-        {user === null && <Route path="/login" element={<Login />} />}
-        <Route path="/login" element={<Login />} />
+        {user === null && <Route path="/" element={<Login />} />}
+        {/* <Route path="/login" element={<Login />} /> */}
         <Route path="/register" element={<Register />} />
         {user !== null && (
           <Route

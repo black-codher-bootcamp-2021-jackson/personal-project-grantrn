@@ -32,7 +32,7 @@ router.post("/register", async (req, res) => {
 });
 
 //LOG IN
-router.post("/login", async (req, res) => {
+router.post("/", async (req, res) => {
   const user = await User.findOne({ email: req.body.email });
   if (!user) {
     return res.status(404).send("user not found");
