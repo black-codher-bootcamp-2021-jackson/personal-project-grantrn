@@ -5,9 +5,7 @@ import Register from "../pages/Register";
 import Home from "../pages/Home";
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
-import Search from "./Search";
 import Booklist from "./BookApi";
-import Test from "./Test";
 
 const MyRoutes = ({
   findBooks,
@@ -15,17 +13,14 @@ const MyRoutes = ({
   addToCurrently,
   addToRead,
   addToWant,
-  readBooks,
-  cbooks,
-  profileRead,
 }) => {
   const { user } = useContext(AuthContext); //returns current context value. determined by value prop of AuthContext.Provider
   console.log("routes", user);
   return (
     <Router>
       <Routes>
-        {/* <Route path="/" element={<Test />} />  */}
         {user === null && <Route path="/login" element={<Login />} />}
+        <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         {user !== null && (
           <Route
@@ -36,9 +31,6 @@ const MyRoutes = ({
                   addToRead={addToRead}
                   findBooks={findBooks}
                   addToCurrently={addToCurrently}
-                  profileRead={profileRead}
-                  cbooks={cbooks}
-                  readBooks={readBooks}
                 />
               </>
             }

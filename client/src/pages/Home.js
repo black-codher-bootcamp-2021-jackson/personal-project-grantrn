@@ -3,26 +3,13 @@ import Profile from "../components/Profile";
 import Search from "../components/Search";
 import { useState } from "react";
 
-const Home = ({
-  addToRead,
-  findBooks,
-  addToCurrently,
-  cbooks,
-  readBooks,
-  profileRead,
-}) => {
+const Home = ({ addToRead, findBooks, addToCurrently }) => {
   const [keyword, setKeyword] = useState("");
   return (
     <>
       <Header />
       <Search findBooks={findBooks} keyword={keyword} setKeyword={setKeyword} />
-      <Profile
-        addToRead={addToRead}
-        addToCurrently={addToCurrently}
-        cbooks={cbooks}
-        readBooks={readBooks}
-        profileRead={profileRead}
-      />
+      <Profile addToRead={addToRead} addToCurrently={addToCurrently} />
     </>
   );
 };

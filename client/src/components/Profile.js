@@ -1,26 +1,53 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 import Book from "./Book";
+import BookList from "./BookApi";
 
-const Profile = ({
-  addToRead,
-  addToCurrently,
-  cbooks,
-  readBooks,
-  profileRead,
-}) => {
+const Profile = ({ addToRead, addToCurrently }) => {
   const { user } = useContext(AuthContext);
+  const [cBooks, setcBooks] = useState([]); //curently rading
+  const [readBooks, setReadBooks] = useState([]); //read
+  const [wantRead, setWantRead] = useState([]);
 
+  useEffect(() => {
+    setcBooks(user.user.currentBooks);
+  }, []);
+
+  useEffect(() => {
+    setReadBooks(user.user.read);
+  }, []);
+
+  useEffect(() => {
+    setWantRead(user.user.wantToRead);
+  }, []);
+
+  //update arrays on client side
+  const profileRead = (book) => {
+    setReadBooks((previousState) => {
+      console.log(previousState);
+      return [...previousState, book];
+    });
+
+    setcBooks(cBooks.filter((item) => item !== book));
+  }; //add on client side
+  // filter from currentBooks to remove
+  const profileCurrent = (book) => {
+    setcBooks((previousState) => {
+      console.log(previousState);
+      return [...previousState, book];
+    });
+
+    // setBooks(books.filter((item) => item !== book));
+  };
+  // <BookList profileRead={profileRead} profileCurrent={profileCurrent} />;
   const display = true;
-  console.log(user);
-  console.log(user.user.currentBooks);
 
   return (
     <>
       <h4 className="subtitle">Currently Reading</h4>
       <div className="list">
-        {cbooks.length !== 0 ? (
-          cbooks.map((book) => (
+        {cBooks.length !== 0 ? (
+          cBooks.map((book) => (
             <div>
               <Book
                 key={book.id}
@@ -39,8 +66,8 @@ const Profile = ({
 
       <h4 className="subtitle">Want to Read</h4>
       <div className="list">
-        {user.user.wantToRead.length !== 0 ? (
-          user.user.wantToRead.map((book) => (
+        {wantRead.length !== 0 ? (
+          wantRead.map((book) => (
             <div>
               <Book
                 key={book.id}

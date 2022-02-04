@@ -118,7 +118,7 @@ router.get("/:id/currently", async (req, res) => {
 router.patch("/:id/want", async (req, res) => {
   try {
     const user = await User.findByIdAndUpdate(req.params.id, {
-      $pull: req.body,
+      $push: req.body,
     });
     res.status(200).send("Book has been updated");
   } catch (err) {

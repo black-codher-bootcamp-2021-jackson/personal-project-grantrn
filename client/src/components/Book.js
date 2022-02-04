@@ -11,6 +11,7 @@ const Book = ({
   addToWant,
   display,
   profileRead,
+  profileCurrent,
 }) => {
   return (
     <div className="container">
@@ -31,6 +32,8 @@ const Book = ({
                 className="button"
                 onClick={() => {
                   addToCurrently(book);
+
+                  // profileCurrent(book);
                 }}
               >
                 Add to currently reading
