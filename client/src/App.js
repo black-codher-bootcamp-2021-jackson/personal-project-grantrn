@@ -3,15 +3,11 @@ import MyRoutes from "./components/Routes";
 import { AuthContext } from "./context/AuthContext";
 import { useContext, useState, useEffect } from "react";
 import axios from "axios";
-import Profile from "./components/Profile";
 
 function App() {
   const { user } = useContext(AuthContext);
   const [books, setBooks] = useState([]);
 
-  function refreshPage() {
-    window.location.reload(false);
-  }
   //move into apicalls
   async function findBooks(value) {
     const url = `https://www.googleapis.com/books/v1/volumes?q=${value}`;

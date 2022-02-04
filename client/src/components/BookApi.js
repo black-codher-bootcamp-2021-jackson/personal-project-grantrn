@@ -1,4 +1,5 @@
-import { React, useEffect } from "react";
+import { React, useEffect, useState, useContext } from "react";
+import { AuthContext } from "../context/AuthContext";
 import Book from "./Book";
 import { useNavigate, Navigate, Link } from "react-router";
 
@@ -18,7 +19,7 @@ const BookList = ({ books, addToCurrently, addToWant, addToRead }) => {
   return (
     <>
       <div>{GoBack()}</div>
-      {/* <Navigate to="/profile/:id">About</Navigate> */}
+
       <div className="list">
         <div>
           {books.map((book) => (

@@ -4,8 +4,8 @@ import Book from "./Book";
 
 const Profile = ({ addToRead, addToCurrently }) => {
   const { user } = useContext(AuthContext);
-  const [books, setBooks] = useState([]);
-  const [readBooks, setReadBooks] = useState([]);
+  const [books, setBooks] = useState([]); //curently rading
+  const [readBooks, setReadBooks] = useState([]); //read
 
   useEffect(() => {
     setBooks(user.user.currentBooks);
@@ -15,12 +15,24 @@ const Profile = ({ addToRead, addToCurrently }) => {
     setReadBooks(user.user.read);
   }, []);
 
+  //update arrays on client side
   const profileRead = (book) => {
     setReadBooks((previousState) => {
+      console.log(previousState);
       return [...previousState, book];
     });
+
+    setBooks(books.filter((item) => item !== book));
   }; //add on client side
   // filter from currentBooks to remove
+  const profileCurrent = (book) => {
+    setBooks((previousState) => {
+      console.log(previousState);
+      return [...previousState, book];
+    });
+
+    // setBooks(books.filter((item) => item !== book));
+  };
 
   const display = true;
   console.log(user);

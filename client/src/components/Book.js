@@ -20,17 +20,19 @@ const Book = ({
           <h2 title={title}></h2>
           <p className="author">{authors}</p>
 
-          <p className="description">
-            {description}
-            {/* {description ? description : "No description"} */}
-          </p>
+          <p className="description">{description}</p>
         </div>
 
         {!display && (
           <div className="dropdown">
             <button className="dropbtn">Options</button>
             <div className="dropdown-content">
-              <button className="button" onClick={() => addToCurrently(book)}>
+              <button
+                className="button"
+                onClick={() => {
+                  addToCurrently(book);
+                }}
+              >
                 Add to currently reading
               </button>
               <button className="button" onClick={() => addToWant(book)}>
