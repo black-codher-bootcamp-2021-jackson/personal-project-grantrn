@@ -3,10 +3,41 @@ import MyRoutes from "./components/Routes";
 import { AuthContext } from "./context/AuthContext";
 import { useContext, useState, useEffect } from "react";
 import axios from "axios";
+import Profile from "./components/Profile";
+import Login from "./pages/Login";
 
 function App() {
   const { user } = useContext(AuthContext);
-  const [books, setBooks] = useState([]);
+  const [books, setBooks] = useState([]); //set from google api
+  const [cbooks, setcBooks] = useState([]); //curently rading
+  const [readBooks, setReadBooks] = useState([]); //read
+
+  useEffect(() => {
+    setcBooks(user.user.currentBooks);
+  }, []);
+
+  useEffect(() => {
+    setReadBooks(user.user.read);
+  }, []);
+
+  //update arrays on client side
+  const profileRead = (book) => {
+    setReadBooks((previousState) => {
+      console.log(previousState);
+      return [...previousState, book];
+    });
+
+    setcBooks(cbooks.filter((item) => item !== book));
+  }; //add on client side
+  // filter from currentBooks to remove
+  const profileCurrent = (book) => {
+    setcBooks((previousState) => {
+      console.log(previousState);
+      return [...previousState, book];
+    });
+
+    // setBooks(books.filter((item) => item !== book));
+  };
 
   //move into apicalls
   async function findBooks(value) {
@@ -54,6 +85,11 @@ function App() {
     <>
       <MyRoutes
         user={user}
+        cbooks={cbooks}
+        readBooks={readBooks}
+        setReadBooks={setReadBooks}
+        setcBooks={setcBooks}
+        profileRead={profileRead}
         findBooks={findBooks}
         books={books}
         addToCurrently={addToCurrently}

@@ -2,37 +2,14 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 import Book from "./Book";
 
-const Profile = ({ addToRead, addToCurrently }) => {
+const Profile = ({
+  addToRead,
+  addToCurrently,
+  cbooks,
+  readBooks,
+  profileRead,
+}) => {
   const { user } = useContext(AuthContext);
-  const [books, setBooks] = useState([]); //curently rading
-  const [readBooks, setReadBooks] = useState([]); //read
-
-  useEffect(() => {
-    setBooks(user.user.currentBooks);
-  }, []);
-
-  useEffect(() => {
-    setReadBooks(user.user.read);
-  }, []);
-
-  //update arrays on client side
-  const profileRead = (book) => {
-    setReadBooks((previousState) => {
-      console.log(previousState);
-      return [...previousState, book];
-    });
-
-    setBooks(books.filter((item) => item !== book));
-  }; //add on client side
-  // filter from currentBooks to remove
-  const profileCurrent = (book) => {
-    setBooks((previousState) => {
-      console.log(previousState);
-      return [...previousState, book];
-    });
-
-    // setBooks(books.filter((item) => item !== book));
-  };
 
   const display = true;
   console.log(user);
@@ -42,8 +19,8 @@ const Profile = ({ addToRead, addToCurrently }) => {
     <>
       <h4 className="subtitle">Currently Reading</h4>
       <div className="list">
-        {books.length !== 0 ? (
-          books.map((book) => (
+        {cbooks.length !== 0 ? (
+          cbooks.map((book) => (
             <div>
               <Book
                 key={book.id}
