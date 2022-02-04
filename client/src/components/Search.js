@@ -11,13 +11,14 @@ const Search = (props) => {
     navigate("/search");
   };
   return (
-    <div className="search">
+    <div className="searchbar">
       <form onSubmit={handleSubmit}>
         <label>
-          Book name:
           <input
+            placeholder="Search a book name"
             value={props.keyword}
             onChange={(e) => props.setKeyword(e.target.value)}
+            className="searchInput"
           />
           <input type="submit" />
         </label>

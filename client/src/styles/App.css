@@ -3,6 +3,8 @@
   margin: 10;
   padding: 10;
   font-family: "Roboto", sans-serif;
+  background-color: #e2caff;
+  color: #3b3b3b;
 }
 
 .App {
@@ -37,7 +39,8 @@
   text-align: center;
   padding: 5px;
   height: 50px;
-  border-bottom: 4px solid black;
+  border-bottom: 4px solid #3c0086;
+  background-color: #ebdbff;
 
   /* height: 50px;
   width: 100%;
@@ -48,10 +51,17 @@
   z-index: 999; */
 }
 
-.search {
+.searchbar {
   position: absolute;
   top: 45px;
   right: 5px;
+  background-color: #ebdbff;
+}
+
+.searchInput {
+  border-radius: 5px;
+  width: 70%;
+  background-color: #ebdbff;
 }
 
 .container {
@@ -70,6 +80,9 @@
 }
 .list {
   /* float:left; */
+  border: 3px solid #bc86ff;
+  border-radius: 10px;
+  background-color: #ebdbff;
 
   display: flex;
   /* flex-direction: row;
@@ -81,6 +94,9 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  border: 3px solid #bc86ff;
+  border-radius: 10px;
+  background-color: #ebdbff;
 }
 
 .subtitle {
@@ -104,6 +120,13 @@
 .description {
   float: right;
   text-align: justify;
+}
+
+.back {
+  width: 200px;
+  background-color: #ebdbff;
+  font-weight: bold;
+  border-radius: 20px;
 }
 
 .dropbtn {

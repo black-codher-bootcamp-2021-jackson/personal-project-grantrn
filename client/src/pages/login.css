@@ -1,7 +1,7 @@
 .login {
   width: 100vw;
   height: 100vh;
-  background-color: #f0f2f5;
+  background-color: #e2caff;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -35,17 +35,19 @@
 .loginBox {
   height: 300px;
   padding: 20px;
-  background-color: white;
+  background-color: #ebdbff;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  border: 3px solid #bbadff;
 }
 
 .loginInput {
   height: 50px;
   border-radius: 10px;
-  border: 1px solid gray;
+  border: 1px solid #bbadff;
+  background-color: #f5ecff;
   font-size: 18px;
   padding-left: 20px;
 }
@@ -58,28 +60,23 @@
   height: 50px;
   border-radius: 10px;
   border: none;
-  background-color: #1775ee;
+  background-color: #be86ff;
   color: white;
   font-size: 20px;
   font-weight: 500;
   cursor: pointer;
 }
 
-.loginForgot {
-  text-align: center;
-  color: #1775ee;
-}
-
 .loginRegisterButton {
   width: 30%;
-  margin-left: auto; 
+  margin-left: auto;
   margin-right: 0;
   top: 0px;
   right: 0px;
   height: 50px;
   border-radius: 10px;
   border: none;
-  background-color: #42b72a;
+  background-color: #c19ee0;
   color: white;
   font-size: 20px;
   font-weight: 500;

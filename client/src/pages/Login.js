@@ -24,8 +24,9 @@ const Login = () => {
     }
   }, [user]);
 
-  console.log(email);
-  console.log(user);
+  const signUp = () => {
+    navigate("/register");
+  };
   return (
     <>
       <div className="login">
@@ -37,8 +38,10 @@ const Login = () => {
             <span className="loginDesc">Reading made simple.</span>
           </div>
           <div className="loginRight">
-            <form className="loginBox" onSubmit={handleClick}>
-              <button className="loginRegisterButton">Sign up</button>
+            <form className="loginBox">
+              <button className="loginRegisterButton" onClick={signUp}>
+                Sign up
+              </button>
               <input
                 placeholder="Email"
                 type="email"
@@ -54,10 +57,13 @@ const Login = () => {
                 className="loginInput"
                 ref={password}
               />
-              <button className="loginButton" type="submit">
+              <button
+                className="loginButton"
+                type="submit"
+                onClick={handleClick}
+              >
                 {isFetching ? "Please Wait..." : "Log In"}
               </button>
-              <span className="loginForgot">Forgot Password?</span>
             </form>
           </div>
         </div>

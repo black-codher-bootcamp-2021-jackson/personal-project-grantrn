@@ -18,7 +18,9 @@ const BookList = ({
     }
     return (
       <div>
-        <button onClick={handleClick}>Go Back</button>
+        <button className="back" onClick={handleClick}>
+          Go Back
+        </button>
       </div>
     );
   }

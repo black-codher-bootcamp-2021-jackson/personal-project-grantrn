@@ -24,11 +24,15 @@ const Register = () => {
       };
       try {
         await axios.post("/users/register", user);
-        navigate("/login");
+        navigate("/");
       } catch (err) {
         console.log(err);
       }
     }
+  };
+
+  const logIn = () => {
+    navigate("/");
   };
 
   // loginCall(
@@ -47,8 +51,10 @@ const Register = () => {
             <span className="loginDesc">Reading made simple.</span>
           </div>
           <div className="loginRight">
-            <form className="loginBox" onSubmit={handleClick}>
-              <button className="loginRegisterButton">Log in</button>
+            <form className="loginBox">
+              <button className="LogButton" onClick={logIn}>
+                Log in
+              </button>
               <input
                 placeholder="Username"
                 required
@@ -77,10 +83,13 @@ const Register = () => {
                 className="loginInput"
                 type="password"
               />
-              <button className="loginButton" type="submit">
+              <button
+                className="loginButton"
+                type="submit"
+                onClick={handleClick}
+              >
                 Sign up
               </button>
-              <span className="loginForgot">Forgot Password?</span>
             </form>
           </div>
         </div>

@@ -1,13 +1,13 @@
 import { AuthContext } from "../context/AuthContext";
 import { useState, useContext, useEffect } from "react";
-import Search from './Search'
+import Search from "./Search";
 
 const Header = () => {
   const { user } = useContext(AuthContext);
 
   return (
     <>
-      <h2 className="welcome">Welcome {user.username} </h2>
+      <h2 className="welcome">Welcome {user.user.username} </h2>
     </>
   );
 };
