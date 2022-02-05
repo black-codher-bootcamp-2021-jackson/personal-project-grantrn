@@ -10,7 +10,12 @@
 .App {
   text-align: center;
 }
-
+.wholeContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 0.25fr 1fr 1fr 1fr;
+  grid-gap: 0.2rem;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -41,6 +46,9 @@
   height: 50px;
   border-bottom: 4px solid #3c0086;
   background-color: #ebdbff;
+  grid-column-start: 1;
+  grid-column-end: 5;
+  grid-row-start: 1;
 
   /* height: 50px;
   width: 100%;
@@ -65,10 +73,8 @@
 }
 
 .container {
-  border: 3px solid black;
-  /* height: 200px; */
-  display: flex;
-  flex-direction: row;
+  border: 3px solid #3c0086;
+  border-radius: 2px;
 }
 
 .dropbtn {
@@ -85,8 +91,24 @@
   background-color: #ebdbff;
 
   display: flex;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 2;
   /* flex-direction: row;
   align-items: center; */
+}
+.list-want {
+  /* float:left; */
+  border: 3px solid #bc86ff;
+  border-radius: 10px;
+  background-color: #ebdbff;
+
+  display: flex;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 3;
+  /* flex-direction: row;
+   align-items: center; */
 }
 
 .list-read {
@@ -97,15 +119,36 @@
   border: 3px solid #bc86ff;
   border-radius: 10px;
   background-color: #ebdbff;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 4;
+}
+
+.readStats {
+  /* float:left; */
+  border: 3px solid #bc86ff;
+  border-radius: 10px;
+  background-color: #ebdbff;
+
+  display: flex;
+  /* flex-direction: row;
+   align-items: center; */
+  grid-column-start: 3;
+  grid-column-end: 5;
+  grid-row-start: 2;
+  grid-row-end: 5;
 }
 
 .subtitle {
   font-size: 15px;
   text-decoration: underline;
+  background-color: #ebdbff;
+  position: relative;
 }
 
 .thumbnail {
   border: 3px solid black;
+  border-radius: 10px;
   width: 100px;
   height: 150px;
   object-fit: cover;

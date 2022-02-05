@@ -13,6 +13,7 @@ const MyRoutes = ({
   addToCurrently,
   addToRead,
   addToWant,
+  options,
 }) => {
   const { user } = useContext(AuthContext); //returns current context value. determined by value prop of AuthContext.Provider
 
@@ -32,6 +33,7 @@ const MyRoutes = ({
                   addToRead={addToRead}
                   findBooks={findBooks}
                   addToCurrently={addToCurrently}
+                  options={options}
                 />
               </>
             }
@@ -45,6 +47,7 @@ const MyRoutes = ({
               addToCurrently={addToCurrently}
               addToWant={addToWant}
               addToRead={addToRead}
+              options={options}
             />
           }
         />

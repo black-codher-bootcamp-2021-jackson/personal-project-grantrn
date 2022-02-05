@@ -33,7 +33,7 @@ const Book = ({
                 onClick={() => {
                   addToCurrently(book);
 
-                  // profileCurrent(book);
+                  profileCurrent(book);
                 }}
               >
                 Add to currently reading

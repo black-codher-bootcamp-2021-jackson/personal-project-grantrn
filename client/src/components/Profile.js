@@ -3,49 +3,37 @@ import { AuthContext } from "../context/AuthContext";
 import Book from "./Book";
 import BookList from "./BookApi";
 
-const Profile = ({ addToRead, addToCurrently }) => {
+const Profile = ({ addToRead, addToCurrently, options }) => {
   const { user } = useContext(AuthContext);
-  const [cBooks, setcBooks] = useState([]); //curently rading
-  const [readBooks, setReadBooks] = useState([]); //read
-  const [wantRead, setWantRead] = useState([]);
 
-  useEffect(() => {
-    setcBooks(user.user.currentBooks);
-  }, []);
-
-  useEffect(() => {
-    setReadBooks(user.user.read);
-  }, []);
-
-  useEffect(() => {
-    setWantRead(user.user.wantToRead);
-  }, []);
-
-  //update arrays on client side
-  const profileRead = (book) => {
-    setReadBooks((previousState) => {
-      console.log(previousState);
-      return [...previousState, book];
-    });
-
-    setcBooks(cBooks.filter((item) => item !== book));
-  }; //add on client side
-  // filter from currentBooks to remove
-  const profileCurrent = (book) => {
-    setcBooks((previousState) => {
-      console.log(previousState);
-      return [...previousState, book];
-    });
-
-    // setBooks(books.filter((item) => item !== book));
-  };
+  const {
+    cBooks,
+    profileRead,
+    wantRead,
+    readBooks,
+    setcBooks,
+    setReadBooks,
+    setWantRead,
+  } = options;
   // <BookList profileRead={profileRead} profileCurrent={profileCurrent} />;
   const display = true;
+  console.log(cBooks);
+  useEffect(() => {
+    !cBooks && setcBooks(user.user.currentBooks);
+  }, []);
+
+  useEffect(() => {
+    !readBooks && setReadBooks(user.user.read);
+  }, []);
+
+  useEffect(() => {
+    !wantRead && setWantRead(user.user.wantToRead);
+  }, []);
 
   return (
     <>
-      <h4 className="subtitle">Currently Reading</h4>
       <div className="list">
+        <h4 className="subtitle">Currently Reading</h4>
         {cBooks.length !== 0 ? (
           cBooks.map((book) => (
             <div>
@@ -64,8 +52,8 @@ const Profile = ({ addToRead, addToCurrently }) => {
         )}
       </div>
 
-      <h4 className="subtitle">Want to Read</h4>
-      <div className="list">
+      <div className="list-want">
+        <h4 className="subtitle">Want to Read</h4>
         {wantRead.length !== 0 ? (
           wantRead.map((book) => (
             <div>
@@ -83,8 +71,8 @@ const Profile = ({ addToRead, addToCurrently }) => {
         )}
       </div>
 
-      <h4 className="subtitle">Read</h4>
       <div className="list-read">
+        <h4 className="subtitle">Read</h4>
         {readBooks.length !== 0 ? (
           readBooks.map((book) => (
             <div>
@@ -101,6 +89,9 @@ const Profile = ({ addToRead, addToCurrently }) => {
           <p className="empty">No items found...</p>
         )}
       </div>
+      {/* <div className="readStats">
+        <h4 className="subtitle">Read stats</h4>
+      </div> */}
     </>
   );
 };

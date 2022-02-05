@@ -7,6 +7,39 @@ import axios from "axios";
 function App() {
   const { user } = useContext(AuthContext);
   const [books, setBooks] = useState([]); //set from google api
+  const [cBooks, setcBooks] = useState([]); //curently rading
+  const [readBooks, setReadBooks] = useState([]); //read
+  const [wantRead, setWantRead] = useState([]);
+
+  //update arrays on client side
+  const profileRead = (book) => {
+    setReadBooks((previousState) => {
+      console.log(previousState);
+      return [...previousState, book];
+    });
+
+    setcBooks(cBooks.filter((item) => item !== book));
+  }; //add on client side
+  // filter from currentBooks to remove
+  const profileCurrent = (book) => {
+    setcBooks((previousState) => {
+      console.log(previousState);
+      return [...previousState, book];
+    });
+
+    setBooks(books.filter((item) => item !== book));
+  };
+
+  let options = {
+    cBooks,
+    profileRead,
+    profileCurrent,
+    readBooks,
+    wantRead,
+    setcBooks,
+    setReadBooks,
+    setWantRead,
+  };
 
   //move into apicalls
   async function findBooks(value) {
@@ -20,7 +53,7 @@ function App() {
   const addToCurrently = async (id) => {
     console.log("hello add to currently");
     try {
-      const res = await axios.patch(`users/${user.user._id}/currently`, {
+      await axios.patch(`users/${user.user._id}/currently`, {
         currentBooks: id,
       });
     } catch (err) {
@@ -31,7 +64,7 @@ function App() {
   const addToRead = async (id) => {
     console.log("hello add to read");
     try {
-      const res = await axios.patch(`/users/${user.user._id}/read`, {
+      await axios.patch(`/users/${user.user._id}/read`, {
         read: id,
       });
     } catch (err) {
@@ -42,7 +75,7 @@ function App() {
   const addToWant = async (id) => {
     console.log("hello add to want");
     try {
-      const res = await axios.patch(`/users/${user.user._id}/want`, {
+      await axios.patch(`/users/${user.user._id}/want`, {
         wantToRead: id,
       });
     } catch (err) {
@@ -59,6 +92,7 @@ function App() {
         addToCurrently={addToCurrently}
         addToRead={addToRead}
         addToWant={addToWant}
+        options={options}
       />
     </>
   );

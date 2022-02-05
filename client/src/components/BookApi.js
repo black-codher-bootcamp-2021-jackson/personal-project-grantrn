@@ -3,14 +3,9 @@ import { AuthContext } from "../context/AuthContext";
 import Book from "./Book";
 import { useNavigate, Navigate, Link } from "react-router";
 
-const BookList = ({
-  books,
-  addToCurrently,
-  addToWant,
-  addToRead,
-  profileRead,
-  profileCurrent,
-}) => {
+const BookList = ({ books, addToCurrently, addToWant, addToRead, options }) => {
+  const { profileCurrent, profileRead } = options;
+
   function GoBack() {
     const navigate = useNavigate();
     function handleClick() {
@@ -42,8 +37,8 @@ const BookList = ({
               description={book.volumeInfo.description}
               addToWant={addToWant}
               addToRead={addToRead}
-              profileRead={profileRead}
               profileCurrent={profileCurrent}
+              profileRead={profileRead}
             />
           ))}
         </div>
