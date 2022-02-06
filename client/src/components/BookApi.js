@@ -39,6 +39,7 @@ const BookList = ({ books, addToCurrently, addToWant, addToRead, options }) => {
               addToRead={addToRead}
               profileCurrent={profileCurrent}
               profileRead={profileRead}
+              location="results"
             />
           ))}
         </div>

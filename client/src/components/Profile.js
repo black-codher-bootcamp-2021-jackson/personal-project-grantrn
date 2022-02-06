@@ -14,6 +14,7 @@ const Profile = ({ addToRead, addToCurrently, options, deleteCurrently }) => {
     setcBooks,
     setReadBooks,
     setWantRead,
+    profileCurrent2,
   } = options;
   // <BookList profileRead={profileRead} profileCurrent={profileCurrent} />;
   const display = true;
@@ -46,6 +47,7 @@ const Profile = ({ addToRead, addToCurrently, options, deleteCurrently }) => {
                 addToRead={addToRead}
                 profileRead={profileRead}
                 deleteCurrently={deleteCurrently}
+                location="currently"
               />
             </div>
           ))
@@ -65,6 +67,8 @@ const Profile = ({ addToRead, addToCurrently, options, deleteCurrently }) => {
                 title={book.volumeInfo.title}
                 thumbnail={book.volumeInfo.imageLinks.thumbnail}
                 addToCurrently={addToCurrently}
+                profileCurrent2={profileCurrent2}
+                location="want"
               />
             </div>
           ))

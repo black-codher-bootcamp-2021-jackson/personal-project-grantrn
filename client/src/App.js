@@ -29,11 +29,19 @@ function App() {
 
     setBooks(books.filter((item) => item !== book));
   };
+  const profileCurrent2 = (book) => {
+    setcBooks((previousState) => {
+      console.log(previousState);
+      return [...previousState, book];
+    });
 
+    setWantRead(wantRead.filter((item) => item !== book));
+  };
   let options = {
     cBooks,
     profileRead,
     profileCurrent,
+    profileCurrent2,
     readBooks,
     wantRead,
     setcBooks,

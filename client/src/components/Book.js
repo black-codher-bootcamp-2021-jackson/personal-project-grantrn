@@ -12,7 +12,9 @@ const Book = ({
   display,
   profileRead,
   profileCurrent,
+  profileCurrent2,
   deleteCurrently,
+  location,
 }) => {
   return (
     <div className="container">
@@ -29,36 +31,56 @@ const Book = ({
           <div className="dropdown">
             <button className="dropbtn">Options</button>
             <div className="dropdown-content">
-              <button
-                className="button"
-                onClick={() => {
-                  addToCurrently(book);
-
-                  profileCurrent(book);
-                }}
-              >
-                Add to currently reading
-              </button>
-              <button
-                className="button"
-                onClick={() => {
-                  deleteCurrently(book);
-                }}
-              >
-                Delete
-              </button>
-              <button className="button" onClick={() => addToWant(book)}>
-                Add to want to read
-              </button>
-              <button
-                className="button"
-                onClick={() => {
-                  addToRead(book);
-                  profileRead(book);
-                }}
-              >
-                Add to Read{" "}
-              </button>
+              {location === "currently" && (
+                <>
+                  <button
+                    className="button"
+                    onClick={() => {
+                      addToRead(book);
+                      profileRead(book);
+                    }}
+                  >
+                    Add to Read{" "}
+                  </button>
+                  <button
+                    className="button"
+                    onClick={() => {
+                      deleteCurrently(book);
+                    }}
+                  >
+                    Delete
+                  </button>
+                </>
+              )}
+              {location === "want" && (
+                <>
+                  <button
+                    className="button"
+                    onClick={() => {
+                      addToCurrently(book);
+                      profileCurrent2(book);
+                    }}
+                  >
+                    Add to currently reading
+                  </button>
+                </>
+              )}
+              {location === "results" && (
+                <>
+                  <button
+                    className="button"
+                    onClick={() => {
+                      addToCurrently(book);
+                      profileCurrent(book);
+                    }}
+                  >
+                    Add to currently reading
+                  </button>
+                  <button className="button" onClick={() => addToWant(book)}>
+                    Add to want to read
+                  </button>
+                </>
+              )}
             </div>
           </div>
         )}
