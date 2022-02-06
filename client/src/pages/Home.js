@@ -9,6 +9,8 @@ const Home = ({
   addToCurrently,
   options,
   deleteCurrently,
+  deleteWant,
+  deleteRead,
 }) => {
   const [keyword, setKeyword] = useState("");
   console.log(options);
@@ -21,6 +23,8 @@ const Home = ({
         addToCurrently={addToCurrently}
         options={options}
         deleteCurrently={deleteCurrently}
+        deleteRead={deleteRead}
+        deleteWant={deleteWant}
       />
     </div>
   );

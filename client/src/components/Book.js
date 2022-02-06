@@ -14,6 +14,8 @@ const Book = ({
   profileCurrent,
   profileCurrent2,
   deleteCurrently,
+  deleteWant,
+  deleteRead,
   location,
 }) => {
   return (
@@ -27,63 +29,81 @@ const Book = ({
           <p className="description">{description}</p>
         </div>
 
-        {!display && (
-          <div className="dropdown">
-            <button className="dropbtn">Options</button>
-            <div className="dropdown-content">
-              {location === "currently" && (
-                <>
-                  <button
-                    className="button"
-                    onClick={() => {
-                      addToRead(book);
-                      profileRead(book);
-                    }}
-                  >
-                    Add to Read{" "}
-                  </button>
-                  <button
-                    className="button"
-                    onClick={() => {
-                      deleteCurrently(book);
-                    }}
-                  >
-                    Delete
-                  </button>
-                </>
-              )}
-              {location === "want" && (
-                <>
-                  <button
-                    className="button"
-                    onClick={() => {
-                      addToCurrently(book);
-                      profileCurrent2(book);
-                    }}
-                  >
-                    Add to currently reading
-                  </button>
-                </>
-              )}
-              {location === "results" && (
-                <>
-                  <button
-                    className="button"
-                    onClick={() => {
-                      addToCurrently(book);
-                      profileCurrent(book);
-                    }}
-                  >
-                    Add to currently reading
-                  </button>
-                  <button className="button" onClick={() => addToWant(book)}>
-                    Add to want to read
-                  </button>
-                </>
-              )}
-            </div>
+        <div className="dropdown">
+          <button className="dropbtn">Options</button>
+          <div className="dropdown-content">
+            {location === "currently" && (
+              <>
+                <button
+                  className="button"
+                  onClick={() => {
+                    addToRead(book);
+                    profileRead(book);
+                  }}
+                >
+                  Add to Read{" "}
+                </button>
+                <button
+                  className="button"
+                  onClick={() => {
+                    deleteCurrently(book);
+                  }}
+                >
+                  Delete
+                </button>
+              </>
+            )}
+            {location === "want" && (
+              <>
+                <button
+                  className="button"
+                  onClick={() => {
+                    addToCurrently(book);
+                    profileCurrent2(book);
+                  }}
+                >
+                  Add to currently reading
+                </button>
+                <button
+                  className="button"
+                  onClick={() => {
+                    deleteWant(book);
+                  }}
+                >
+                  Delete
+                </button>
+              </>
+            )}
+            {location === "read" && (
+              <>
+                <button
+                  className="button"
+                  onClick={() => {
+                    deleteRead(book);
+                  }}
+                >
+                  Delete
+                </button>
+              </>
+            )}
+            {location === "results" && (
+              <>
+                <button
+                  className="button"
+                  onClick={() => {
+                    addToCurrently(book);
+                    profileCurrent(book);
+                  }}
+                >
+                  Add to currently reading
+                </button>
+                <button className="button" onClick={() => addToWant(book)}>
+                  Add to want to read
+                </button>
+              </>
+            )}
           </div>
-        )}
+        </div>
       </div>
     </div>
   );

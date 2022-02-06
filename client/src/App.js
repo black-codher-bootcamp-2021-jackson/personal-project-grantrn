@@ -91,6 +91,17 @@ function App() {
     }
   };
 
+  const deleteRead = async (id) => {
+    console.log("hello delete read");
+    try {
+      await axios.post(`users/${user.user._id}/read`, {
+        read: id,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   const addToWant = async (id) => {
     console.log("hello add to want");
     try {
@@ -102,6 +113,16 @@ function App() {
     }
   };
 
+  const deleteWant = async (id) => {
+    console.log("hello delete want");
+    try {
+      await axios.post(`users/${user.user._id}/want`, {
+        wantToRead: id,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <>
       <MyRoutes
@@ -112,6 +133,8 @@ function App() {
         addToRead={addToRead}
         addToWant={addToWant}
         deleteCurrently={deleteCurrently}
+        deleteRead={deleteRead}
+        deleteWant={deleteWant}
         options={options}
       />
     </>

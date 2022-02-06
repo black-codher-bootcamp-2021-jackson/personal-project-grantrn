@@ -3,7 +3,14 @@ import { AuthContext } from "../context/AuthContext";
 import Book from "./Book";
 import BookList from "./BookApi";
 
-const Profile = ({ addToRead, addToCurrently, options, deleteCurrently }) => {
+const Profile = ({
+  addToRead,
+  addToCurrently,
+  options,
+  deleteCurrently,
+  deleteWant,
+  deleteRead,
+}) => {
   const { user } = useContext(AuthContext);
 
   const {
@@ -68,6 +75,7 @@ const Profile = ({ addToRead, addToCurrently, options, deleteCurrently }) => {
                 thumbnail={book.volumeInfo.imageLinks.thumbnail}
                 addToCurrently={addToCurrently}
                 profileCurrent2={profileCurrent2}
+                deleteWant={deleteWant}
                 location="want"
               />
             </div>
@@ -87,7 +95,8 @@ const Profile = ({ addToRead, addToCurrently, options, deleteCurrently }) => {
                 book={book}
                 title={book.volumeInfo.title}
                 thumbnail={book.volumeInfo.imageLinks.thumbnail}
-                display={display}
+                deleteRead={deleteRead}
+                location="read"
               />
             </div>
           ))

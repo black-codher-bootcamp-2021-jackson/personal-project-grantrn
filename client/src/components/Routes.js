@@ -15,6 +15,8 @@ const MyRoutes = ({
   addToWant,
   options,
   deleteCurrently,
+  deleteRead,
+  deleteWant,
 }) => {
   const { user } = useContext(AuthContext); //returns current context value. determined by value prop of AuthContext.Provider
 
@@ -36,6 +38,8 @@ const MyRoutes = ({
                   addToCurrently={addToCurrently}
                   options={options}
                   deleteCurrently={deleteCurrently}
+                  deleteWant={deleteWant}
+                  deleteRead={deleteRead}
                 />
               </>
             }

@@ -132,7 +132,19 @@ router.patch("/:id/want", async (req, res) => {
     const user = await User.findByIdAndUpdate(req.params.id, {
       $push: req.body,
     });
-    res.status(200).send("Book has been updated");
+    res.status(200).send("Book has been deleted from cr");
+  } catch (err) {
+    return res.status(400);
+  }
+});
+
+//delete
+router.post("/:id/want", async (req, res) => {
+  try {
+    await User.findByIdAndUpdate(req.params.id, {
+      $pull: req.body,
+    });
+    res.status(200).send("Book has been deleted want");
   } catch (err) {
     return res.status(400);
   }
@@ -148,6 +160,18 @@ router.patch("/:id/read", async (req, res) => {
       $pull: { currentBooks: req.body.read },
     });
     res.status(200).send("Book has been updated");
+  } catch (err) {
+    return res.status(400);
+  }
+});
+
+//delete
+router.post("/:id/read", async (req, res) => {
+  try {
+    await User.findByIdAndUpdate(req.params.id, {
+      $pull: req.body,
+    });
+    res.status(200).send("Book has been deleted ");
   } catch (err) {
     return res.status(400);
   }
