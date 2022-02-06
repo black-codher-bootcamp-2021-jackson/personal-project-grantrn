@@ -61,6 +61,17 @@ function App() {
     }
   };
 
+  const deleteCurrently = async (id) => {
+    console.log("hello delete currently");
+    try {
+      await axios.post(`users/${user.user._id}/currently`, {
+        currentBooks: id,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   const addToRead = async (id) => {
     console.log("hello add to read");
     try {
@@ -92,6 +103,7 @@ function App() {
         addToCurrently={addToCurrently}
         addToRead={addToRead}
         addToWant={addToWant}
+        deleteCurrently={deleteCurrently}
         options={options}
       />
     </>

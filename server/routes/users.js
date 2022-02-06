@@ -103,6 +103,18 @@ router.patch("/:id/currently", async (req, res) => {
   }
 });
 
+//delete cr book
+router.post("/:id/currently", async (req, res) => {
+  try {
+    await User.findByIdAndUpdate(req.params.id, {
+      $pull: req.body,
+    });
+    res.status(200).send("Book has been updated");
+  } catch (err) {
+    return res.status(400);
+  }
+});
+
 // GET CURRENTLY READING
 router.get("/:id/currently", async (req, res) => {
   try {

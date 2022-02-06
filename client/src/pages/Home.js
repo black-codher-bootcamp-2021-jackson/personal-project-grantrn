@@ -3,7 +3,13 @@ import Profile from "../components/Profile";
 import Search from "../components/Search";
 import { useState } from "react";
 
-const Home = ({ addToRead, findBooks, addToCurrently, options }) => {
+const Home = ({
+  addToRead,
+  findBooks,
+  addToCurrently,
+  options,
+  deleteCurrently,
+}) => {
   const [keyword, setKeyword] = useState("");
   console.log(options);
   return (
@@ -14,6 +20,7 @@ const Home = ({ addToRead, findBooks, addToCurrently, options }) => {
         addToRead={addToRead}
         addToCurrently={addToCurrently}
         options={options}
+        deleteCurrently={deleteCurrently}
       />
     </div>
   );

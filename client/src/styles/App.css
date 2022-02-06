@@ -91,6 +91,8 @@
   background-color: #ebdbff;
 
   display: flex;
+  flex-wrap: wrap;
+
   grid-column-start: 1;
   grid-column-end: 3;
   grid-row-start: 2;
@@ -102,6 +104,7 @@
   border: 3px solid #bc86ff;
   border-radius: 10px;
   background-color: #ebdbff;
+  align-items: start;
 
   display: flex;
   grid-column-start: 1;

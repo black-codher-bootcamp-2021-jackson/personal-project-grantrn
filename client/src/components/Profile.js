@@ -3,7 +3,7 @@ import { AuthContext } from "../context/AuthContext";
 import Book from "./Book";
 import BookList from "./BookApi";
 
-const Profile = ({ addToRead, addToCurrently, options }) => {
+const Profile = ({ addToRead, addToCurrently, options, deleteCurrently }) => {
   const { user } = useContext(AuthContext);
 
   const {
@@ -19,15 +19,16 @@ const Profile = ({ addToRead, addToCurrently, options }) => {
   const display = true;
   console.log(cBooks);
   useEffect(() => {
-    !cBooks && setcBooks(user.user.currentBooks);
+    console.log("use effect currently reading");
+    cBooks && setcBooks(user.user.currentBooks);
   }, []);
 
   useEffect(() => {
-    !readBooks && setReadBooks(user.user.read);
+    readBooks && setReadBooks(user.user.read);
   }, []);
 
   useEffect(() => {
-    !wantRead && setWantRead(user.user.wantToRead);
+    wantRead && setWantRead(user.user.wantToRead);
   }, []);
 
   return (
@@ -44,6 +45,7 @@ const Profile = ({ addToRead, addToCurrently, options }) => {
                 thumbnail={book.volumeInfo.imageLinks.thumbnail}
                 addToRead={addToRead}
                 profileRead={profileRead}
+                deleteCurrently={deleteCurrently}
               />
             </div>
           ))
@@ -89,9 +91,9 @@ const Profile = ({ addToRead, addToCurrently, options }) => {
           <p className="empty">No items found...</p>
         )}
       </div>
-      {/* <div className="readStats">
+      <div className="readStats">
         <h4 className="subtitle">Read stats</h4>
-      </div> */}
+      </div>
     </>
   );
 };
