@@ -1,5 +1,5 @@
 import { React, useRef, useContext } from "react";
-// import "./register.css";
+
 import axios from "axios";
 import { loginCall } from "../apiCalls";
 import { AuthContext } from "../context/AuthContext";
@@ -51,10 +51,7 @@ const Register = () => {
             <span className="loginDesc">Reading made simple.</span>
           </div>
           <div className="loginRight">
-            <form className="loginBox">
-              <button className="LogButton" onClick={logIn}>
-                Log in
-              </button>
+            <form className="signBox">
               <input
                 placeholder="Username"
                 required
@@ -89,6 +86,9 @@ const Register = () => {
                 onClick={handleClick}
               >
                 Sign up
+              </button>
+              <button className="loginRegisterButton" onClick={logIn}>
+                Log in
               </button>
             </form>
           </div>

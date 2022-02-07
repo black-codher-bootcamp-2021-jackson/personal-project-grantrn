@@ -1,5 +1,4 @@
 import { React, useRef, useContext, useEffect } from "react";
-import "./login.css";
 import { loginCall } from "../apiCalls";
 import { AuthContext } from "../context/AuthContext";
 import { useNavigate } from "react-router";
@@ -39,9 +38,6 @@ const Login = () => {
           </div>
           <div className="loginRight">
             <form className="loginBox">
-              <button className="loginRegisterButton" onClick={signUp}>
-                Sign up
-              </button>
               <input
                 placeholder="Email"
                 type="email"
@@ -63,6 +59,9 @@ const Login = () => {
                 onClick={handleClick}
               >
                 {isFetching ? "Please Wait..." : "Log In"}
+              </button>
+              <button className="loginRegisterButton" onClick={signUp}>
+                Sign up
               </button>
             </form>
           </div>
