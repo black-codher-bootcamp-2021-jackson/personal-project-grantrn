@@ -11,8 +11,6 @@ const Profile = ({
   deleteWant,
   deleteRead,
 }) => {
-  const { user } = useContext(AuthContext);
-
   const {
     cBooks,
     profileRead,
@@ -22,21 +20,25 @@ const Profile = ({
     setReadBooks,
     setWantRead,
     profileCurrent2,
+    deleteProfileCurrent,
+    deleteProfileRead,
+    deleteProfileWant,
   } = options;
-  // <BookList profileRead={profileRead} profileCurrent={profileCurrent} />;
-  const display = true;
+
+  const { user } = useContext(AuthContext);
   console.log(cBooks);
+
   useEffect(() => {
     console.log("use effect currently reading");
-    cBooks && setcBooks(user.user.currentBooks);
+    !cBooks && setcBooks(user.user.currentBooks);
   }, []);
 
   useEffect(() => {
-    readBooks && setReadBooks(user.user.read);
+    !readBooks && setReadBooks(user.user.read);
   }, []);
 
   useEffect(() => {
-    wantRead && setWantRead(user.user.wantToRead);
+    !wantRead && setWantRead(user.user.wantToRead);
   }, []);
 
   return (
@@ -54,6 +56,7 @@ const Profile = ({
                 addToRead={addToRead}
                 profileRead={profileRead}
                 deleteCurrently={deleteCurrently}
+                deleteProfileCurrent={deleteProfileCurrent}
                 location="currently"
               />
             </div>
@@ -76,6 +79,7 @@ const Profile = ({
                 addToCurrently={addToCurrently}
                 profileCurrent2={profileCurrent2}
                 deleteWant={deleteWant}
+                deleteProfileWant={deleteProfileWant}
                 location="want"
               />
             </div>
@@ -96,6 +100,7 @@ const Profile = ({
                 title={book.volumeInfo.title}
                 thumbnail={book.volumeInfo.imageLinks.thumbnail}
                 deleteRead={deleteRead}
+                deleteProfileRead={deleteProfileRead}
                 location="read"
               />
             </div>

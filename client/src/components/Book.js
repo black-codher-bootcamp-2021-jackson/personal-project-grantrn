@@ -9,13 +9,16 @@ const Book = ({
   description,
   addToRead,
   addToWant,
-  display,
   profileRead,
   profileCurrent,
   profileCurrent2,
-  deleteCurrently,
+  profileWant,
+  deleteCurrently, //serverside
   deleteWant,
   deleteRead,
+  deleteProfileCurrent,
+  deleteProfileRead,
+  deleteProfileWant,
   location,
 }) => {
   return (
@@ -47,6 +50,7 @@ const Book = ({
                   className="button"
                   onClick={() => {
                     deleteCurrently(book);
+                    deleteProfileCurrent(book);
                   }}
                 >
                   Delete
@@ -68,6 +72,7 @@ const Book = ({
                   className="button"
                   onClick={() => {
                     deleteWant(book);
+                    deleteProfileWant(book);
                   }}
                 >
                   Delete
@@ -80,6 +85,7 @@ const Book = ({
                   className="button"
                   onClick={() => {
                     deleteRead(book);
+                    deleteProfileRead(book);
                   }}
                 >
                   Delete
@@ -97,7 +103,13 @@ const Book = ({
                 >
                   Add to currently reading
                 </button>
-                <button className="button" onClick={() => addToWant(book)}>
+                <button
+                  className="button"
+                  onClick={() => {
+                    addToWant(book);
+                    profileWant(book);
+                  }}
+                >
                   Add to want to read
                 </button>
               </>

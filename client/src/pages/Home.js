@@ -9,6 +9,7 @@ const Home = ({
   addToCurrently,
   options,
   deleteCurrently,
+
   deleteWant,
   deleteRead,
 }) => {

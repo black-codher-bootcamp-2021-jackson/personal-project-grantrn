@@ -4,7 +4,7 @@ import Book from "./Book";
 import { useNavigate, Navigate, Link } from "react-router";
 
 const BookList = ({ books, addToCurrently, addToWant, addToRead, options }) => {
-  const { profileCurrent, profileRead } = options;
+  const { profileCurrent, profileRead, profileWant } = options;
 
   function GoBack() {
     const navigate = useNavigate();
@@ -38,6 +38,7 @@ const BookList = ({ books, addToCurrently, addToWant, addToRead, options }) => {
               addToWant={addToWant}
               addToRead={addToRead}
               profileCurrent={profileCurrent}
+              profileWant={profileWant}
               profileRead={profileRead}
               location="results"
             />

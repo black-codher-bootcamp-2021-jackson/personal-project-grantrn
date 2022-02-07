@@ -11,7 +11,7 @@ function App() {
   const [readBooks, setReadBooks] = useState([]); //read
   const [wantRead, setWantRead] = useState([]);
 
-  //update arrays on client side
+  //move from currrent to read
   const profileRead = (book) => {
     setReadBooks((previousState) => {
       console.log(previousState);
@@ -19,8 +19,9 @@ function App() {
     });
 
     setcBooks(cBooks.filter((item) => item !== book));
-  }; //add on client side
-  // filter from currentBooks to remove
+  };
+
+  // from google book results to current books
   const profileCurrent = (book) => {
     setcBooks((previousState) => {
       console.log(previousState);
@@ -29,6 +30,18 @@ function App() {
 
     setBooks(books.filter((item) => item !== book));
   };
+
+  // from google book results to want to read client side
+  const profileWant = (book) => {
+    setWantRead((previousState) => {
+      console.log(previousState);
+      return [...previousState, book];
+    });
+
+    setBooks(books.filter((item) => item !== book));
+  };
+
+  //move from want to read to currently reading clinet side
   const profileCurrent2 = (book) => {
     setcBooks((previousState) => {
       console.log(previousState);
@@ -37,6 +50,22 @@ function App() {
 
     setWantRead(wantRead.filter((item) => item !== book));
   };
+
+  //delete from currently reading client side
+  const deleteProfileCurrent = (book) => {
+    setcBooks(cBooks.filter((item) => item !== book));
+  };
+
+  //delete from want to read client side
+  const deleteProfileWant = (book) => {
+    setWantRead(wantRead.filter((item) => item !== book));
+  };
+
+  //delete from read client side
+  const deleteProfileRead = (book) => {
+    setReadBooks(readBooks.filter((item) => item !== book));
+  };
+
   let options = {
     cBooks,
     profileRead,
@@ -47,6 +76,10 @@ function App() {
     setcBooks,
     setReadBooks,
     setWantRead,
+    profileWant,
+    deleteProfileCurrent,
+    deleteProfileRead,
+    deleteProfileWant,
   };
 
   //move into apicalls
