@@ -30,15 +30,15 @@ const Profile = ({
 
   useEffect(() => {
     console.log("use effect currently reading");
-    !cBooks && setcBooks(user.user.currentBooks);
+    cBooks.length === 0 && setcBooks(user.user.currentBooks);
   }, []);
 
   useEffect(() => {
-    !readBooks && setReadBooks(user.user.read);
+    readBooks.length === 0 && setReadBooks(user.user.read);
   }, []);
 
   useEffect(() => {
-    !wantRead && setWantRead(user.user.wantToRead);
+    wantRead.length === 0 && setWantRead(user.user.wantToRead);
   }, []);
 
   return (
@@ -62,7 +62,7 @@ const Profile = ({
             </div>
           ))
         ) : (
-          <p className="empty">No items found...</p>
+          <p className="empty">You currently aren't reading anything...</p>
         )}
       </div>
 
@@ -85,7 +85,7 @@ const Profile = ({
             </div>
           ))
         ) : (
-          <p className="empty">No items found...</p>
+          <p className="empty">You don't want to read any books...</p>
         )}
       </div>
 
@@ -106,7 +106,7 @@ const Profile = ({
             </div>
           ))
         ) : (
-          <p className="empty">No items found...</p>
+          <p className="empty">You haven't read anything...</p>
         )}
       </div>
       <div className="readStats">

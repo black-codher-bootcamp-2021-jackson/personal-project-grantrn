@@ -24,7 +24,11 @@ const Book = ({
   return (
     <div className="container">
       <div>
-        <img src={thumbnail} alt={title} className="thumbnail" />
+        {thumbnail !== "no picture found" ? (
+          <img src={thumbnail} alt={title} className="thumbnail" />
+        ) : (
+          <p>{thumbnail}</p>
+        )}
         <div>
           <h2 title={title}></h2>
           <p className="author">{authors}</p>
