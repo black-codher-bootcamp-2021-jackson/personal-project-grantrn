@@ -9,7 +9,7 @@ const BookList = ({ books, addToCurrently, addToWant, addToRead, options }) => {
   function GoBack() {
     const navigate = useNavigate();
     function handleClick() {
-      navigate("/");
+      navigate(-1);
     }
     return (
       <div>

@@ -23,7 +23,7 @@ const Book = ({
 }) => {
   return (
     <div className="container">
-      <div>
+      <div className="individualBook">
         {thumbnail !== "no picture found" ? (
           <img src={thumbnail} alt={title} className="thumbnail" />
         ) : (

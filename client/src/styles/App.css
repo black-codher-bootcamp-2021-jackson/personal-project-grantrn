@@ -144,6 +144,8 @@
 .container {
   border: 3px solid #3c0086;
   border-radius: 2px;
+
+  position: relative;
 }
 
 .dropbtn {
@@ -153,57 +155,42 @@
   /* right: 1px;
   top: -10px; */
 }
+.individualBook {
+  background-color: transparent;
+}
 .list {
   border: 3px solid #bc86ff;
   border-radius: 10px;
   background-color: #ebdbff;
-
-  display: flex;
-  flex-wrap: wrap;
-
+}
+.list-current {
   grid-column-start: 1;
   grid-column-end: 3;
   grid-row-start: 2;
-  /* flex-direction: row;
-  align-items: center; */
 }
 .list-want {
-  /* float:left; */
-  border: 3px solid #bc86ff;
-  border-radius: 10px;
-  background-color: #ebdbff;
-  align-items: start;
-
-  display: flex;
   grid-column-start: 1;
   grid-column-end: 3;
   grid-row-start: 3;
-  /* flex-direction: row;
-   align-items: center; */
 }
 
 .list-read {
-  /* float:left; */
-  display: flex;
-  flex-wrap: wrap;
   align-items: center;
-  border: 3px solid #bc86ff;
-  border-radius: 10px;
-  background-color: #ebdbff;
+
   grid-column-start: 1;
   grid-column-end: 3;
   grid-row-start: 4;
 }
 
+.books-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .readStats {
-  /* float:left; */
   border: 3px solid #bc86ff;
   border-radius: 10px;
   background-color: #ebdbff;
-
-  display: flex;
-  /* flex-direction: row;
-   align-items: center; */
   grid-column-start: 3;
   grid-column-end: 5;
   grid-row-start: 2;
@@ -214,15 +201,16 @@
   /* font-size: 15px; */
   text-decoration: underline;
   background-color: #ebdbff;
-  position: absolute;
-  padding: -5px;
+  position: relative;
+  text-align: center;
 }
 
 .empty {
   background-color: transparent;
   position: relative;
-  top: 25px;
+  float: left;
 }
+
 .thumbnail {
   border: 3px solid black;
   border-radius: 10px;

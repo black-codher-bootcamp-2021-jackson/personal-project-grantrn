@@ -43,11 +43,11 @@ const Profile = ({
 
   return (
     <>
-      <div className="list">
+      <div className="list list-current">
         <h4 className="subtitle">Currently Reading</h4>
         {cBooks.length !== 0 ? (
-          cBooks.map((book) => (
-            <div>
+          <div className="books-container">
+            {cBooks.map((book) => (
               <Book
                 key={book.id}
                 book={book}
@@ -59,41 +59,45 @@ const Profile = ({
                 deleteProfileCurrent={deleteProfileCurrent}
                 location="currently"
               />
-            </div>
-          ))
+            ))}
+          </div>
         ) : (
           <p className="empty">You currently aren't reading anything...</p>
         )}
       </div>
 
-      <div className="list-want">
+      <div className="list list-want">
         <h4 className="subtitle">Want to Read</h4>
+
         {wantRead.length !== 0 ? (
-          wantRead.map((book) => (
-            <div>
-              <Book
-                key={book.id}
-                book={book}
-                title={book.volumeInfo.title}
-                thumbnail={book.volumeInfo.imageLinks.thumbnail}
-                addToCurrently={addToCurrently}
-                profileCurrent2={profileCurrent2}
-                deleteWant={deleteWant}
-                deleteProfileWant={deleteProfileWant}
-                location="want"
-              />
-            </div>
-          ))
+          <div className="books-container">
+            {wantRead.map((book) => (
+              <div>
+                <Book
+                  key={book.id}
+                  book={book}
+                  title={book.volumeInfo.title}
+                  thumbnail={book.volumeInfo.imageLinks.thumbnail}
+                  addToCurrently={addToCurrently}
+                  profileCurrent2={profileCurrent2}
+                  deleteWant={deleteWant}
+                  deleteProfileWant={deleteProfileWant}
+                  location="want"
+                />
+              </div>
+            ))}
+          </div>
         ) : (
           <p className="empty">You don't want to read any books...</p>
         )}
       </div>
 
-      <div className="list-read">
+      <div className="list list-read ">
         <h4 className="subtitle">Read</h4>
+
         {readBooks.length !== 0 ? (
-          readBooks.map((book) => (
-            <div>
+          <div className="books-container">
+            {readBooks.map((book) => (
               <Book
                 key={book.id}
                 book={book}
@@ -103,13 +107,13 @@ const Profile = ({
                 deleteProfileRead={deleteProfileRead}
                 location="read"
               />
-            </div>
-          ))
+            ))}
+          </div>
         ) : (
           <p className="empty">You haven't read anything...</p>
         )}
       </div>
-      <div className="readStats">
+      <div className=" readStats">
         <h4 className="subtitle">Read stats</h4>
       </div>
     </>
