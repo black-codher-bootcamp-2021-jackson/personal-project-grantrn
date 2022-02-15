@@ -7,7 +7,10 @@ const Header = () => {
 
   return (
     <>
-      <h2 className="welcome">Welcome {user.user.username} </h2>
+      <h2 className="welcome">
+        <em>Better</em>Reads
+      </h2>
+      <p className="home">Home &nbsp;&nbsp; Explore&nbsp;&nbsp; Community</p>
     </>
   );
 };

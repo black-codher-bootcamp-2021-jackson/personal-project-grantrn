@@ -1,15 +1,17 @@
-// import { DropdownButton, Dropdown } from "react-bootstrap";
-
-// const Test = () => {
-//   return (
-//     <>
-//       <DropdownButton id="dropdown-basic-button" title="Dropdown button">
-//         <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-//         <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-//         <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-//       </DropdownButton>
-//     </>
-//   );
+// const data = {
+//   labels: ["Red", "Blue", "Yellow"],
+//   datasets: [
+//     {
+//       label: "My First Dataset",
+//       data: [300, 50, 100],
+//       backgroundColor: [
+//         "rgb(255, 99, 132)",
+//         "rgb(54, 162, 235)",
+//         "rgb(255, 205, 86)",
+//       ],
+//       hoverOffset: 4,
+//     },
+//   ],
 // };
 
-// export default Test;
+// export default data;

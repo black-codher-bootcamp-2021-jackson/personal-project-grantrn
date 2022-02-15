@@ -1,7 +1,8 @@
 import "./styles/App.css";
 import MyRoutes from "./components/Routes";
 import { AuthContext } from "./context/AuthContext";
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState } from "react";
+
 import axios from "axios";
 
 function App() {
@@ -156,6 +157,7 @@ function App() {
       console.log(err);
     }
   };
+
   return (
     <>
       <MyRoutes

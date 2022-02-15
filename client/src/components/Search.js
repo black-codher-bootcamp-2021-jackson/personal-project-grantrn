@@ -12,7 +12,7 @@ const Search = (props) => {
   };
   return (
     <div className="searchbar">
-      <form onSubmit={handleSubmit}>
+      <form>
         <label>
           <input
             placeholder="Search a book name"
@@ -20,7 +20,8 @@ const Search = (props) => {
             onChange={(e) => props.setKeyword(e.target.value)}
             className="searchInput"
           />
-          <input type="submit" />
+          <button onClick={handleSubmit}>Enter</button>
+          {/* <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" /> */}
         </label>
       </form>
     </div>

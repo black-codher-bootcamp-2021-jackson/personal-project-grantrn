@@ -1,7 +1,8 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { AuthContext } from "../context/AuthContext";
 import Book from "./Book";
-import BookList from "./BookApi";
+// import { Doughnut } from "react-chartjs-2";
+// import data from "./Test";
 
 const Profile = ({
   addToRead,
@@ -26,18 +27,11 @@ const Profile = ({
   } = options;
 
   const { user } = useContext(AuthContext);
-  console.log(cBooks);
 
   useEffect(() => {
     console.log("use effect currently reading");
     cBooks.length === 0 && setcBooks(user.user.currentBooks);
-  }, []);
-
-  useEffect(() => {
     readBooks.length === 0 && setReadBooks(user.user.read);
-  }, []);
-
-  useEffect(() => {
     wantRead.length === 0 && setWantRead(user.user.wantToRead);
   }, []);
 
@@ -114,7 +108,8 @@ const Profile = ({
         )}
       </div>
       <div className=" readStats">
-        <h4 className="subtitle">Read stats</h4>
+        <h4 className="subtitle">Read stats for {user.user.username}</h4>
+        {/* <Doughnut data={data} /> */}
       </div>
     </>
   );
