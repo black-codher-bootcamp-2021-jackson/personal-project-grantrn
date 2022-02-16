@@ -20,7 +20,9 @@ const Search = (props) => {
             onChange={(e) => props.setKeyword(e.target.value)}
             className="searchInput"
           />
-          <button onClick={handleSubmit}>Enter</button>
+          <button className="enter" onClick={handleSubmit}>
+            Enter
+          </button>
           {/* <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" /> */}
         </label>
       </form>

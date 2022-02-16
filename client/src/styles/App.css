@@ -3,8 +3,7 @@
   margin: 10;
   padding: 10;
   font-family: "Roboto", sans-serif;
-  background-color: #e2caff;
-  color: #3b3b3b;
+  background-color: #c7d9d5;
 }
 
 .App {
@@ -20,13 +19,15 @@
   height: 40vmin;
   pointer-events: none;
 }
-
+.logo {
+  font-size: 35px;
+}
 .welcome {
   text-align: center;
   padding: 5px;
   height: 50px;
-  border-bottom: 4px solid #3c0086;
-  background-color: #ebdbff;
+  border-bottom: 4px solid #89b1a7;
+  background-color: #c7d9d5;
   grid-column-start: 1;
   grid-column-end: 5;
   grid-row-start: 1;
@@ -45,7 +46,7 @@
 .login {
   width: 100vw;
   height: 100vh;
-  background-color: #e2caff;
+  background-color: #c7d9d5;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -57,7 +58,13 @@
   display: flex;
 }
 
-.loginLeft,
+.loginLeft {
+  flex: 0.75;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .loginRight {
   flex: 1;
   display: flex;
@@ -66,29 +73,29 @@
 }
 
 .loginDesc {
-  font-size: 24px;
+  font-size: 20px;
 }
 
 .loginBox {
   height: 300px;
   padding: 20px;
-  background-color: #ebdbff;
+  background-color: #bcd3cd;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border: 3px solid #bbadff;
+  border: 3px solid #89b1a7;
 }
 
 .signBox {
   height: 400px;
   padding: 20px;
-  background-color: #ebdbff;
+  background-color: #bcd3cd;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border: 3px solid #bbadff;
+  border: 3px solid #89b1a7;
 }
 
 .loginInput:focus {
@@ -97,8 +104,8 @@
 .loginInput {
   height: 50px;
   border-radius: 10px;
-  border: 1px solid #bbadff;
-  background-color: #f5ecff;
+  border: 1px solid #89b1a7;
+  background-color: #e5eeec;
   font-size: 18px;
   padding-left: 20px;
 }
@@ -107,12 +114,12 @@
   height: 50px;
   border-radius: 10px;
   border: none;
-  background-color: #be86ff;
+  background-color: #94b7af;
   color: white;
   font-size: 20px;
   font-weight: 500;
   cursor: pointer;
-  border: 3px solid #bbadff;
+  border: 3px solid #89b1a7;
 }
 
 .loginRegisterButton {
@@ -121,30 +128,30 @@
   height: 50px;
   border-radius: 10px;
   border: none;
-  background-color: #c19ee0;
+  background-color: #9ebeb6;
   color: white;
   font-size: 20px;
   font-weight: 500;
   cursor: pointer;
-  border: 3px solid #bbadff;
+  border: 3px solid #89b1a7;
 }
 /**/
 .searchbar {
   position: absolute;
   top: 45px;
   right: 5px;
-  background-color: #ebdbff;
+  background-color: #c7d9d5;
 }
 
 .searchInput {
   border-radius: 5px;
   width: 70%;
-  background-color: #ebdbff;
+  background-color: #c7d9d5;
 }
 /* box arund the individual book*/
 .container {
-  border: 3px solid #3c0086;
-  border-radius: 2px;
+  border: 3px solid #89b1a7;
+  border-radius: 10px;
 
   position: relative;
 }
@@ -160,9 +167,9 @@
   background-color: transparent;
 }
 .list {
-  border: 3px solid #bc86ff;
+  border: 3px solid #7faa9f;
   border-radius: 10px;
-  background-color: #ebdbff;
+  background-color: #c7d9d5;
 }
 .list-current {
   grid-column-start: 1;
@@ -189,9 +196,9 @@
 }
 
 .readStats {
-  border: 3px solid #bc86ff;
+  border: 3px solid #7faa9f;
   border-radius: 10px;
-  background-color: #ebdbff;
+  background-color: #c7d9d5;
   grid-column-start: 3;
   grid-column-end: 5;
   grid-row-start: 2;
@@ -201,7 +208,7 @@
 .subtitle {
   /* font-size: 15px; */
   text-decoration: underline;
-  background-color: #ebdbff;
+  background-color: #c7d9d5;
   position: relative;
   text-align: center;
 }
@@ -224,6 +231,12 @@
 
 .button {
   width: 150px;
+  font-size: 15px;
+  border-radius: 7px;
+  background-color: transparent;
+}
+.button:hover {
+  background-color: #a7c6be;
 }
 
 .description {
@@ -233,14 +246,14 @@
 
 .back {
   width: 200px;
-  background-color: #ebdbff;
+  background-color: #c7d9d5;
   font-weight: bold;
   border-radius: 20px;
 }
 
 .dropbtn {
-  background-color: #ebdbff;
-  border: 1px solid #3c0086;
+  background-color: #bcd3cd;
+  border: 1px solid #7faa9f;
   padding: 16px;
   font-size: 16px;
   width: 100px;
@@ -260,7 +273,6 @@
 .dropdown-content {
   display: none;
   position: absolute;
-
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
@@ -269,15 +281,10 @@
 /* Links inside the dropdown */
 .dropdown-content a {
   color: black;
-  border: 3px solid #3c0086;
+  border: 3px solid #7faa9f;
   padding: 12px 16px;
   text-decoration: none;
   display: block;
-}
-
-/* Change color of dropdown links on hover */
-.dropdown-content a:hover {
-  background-color: #f1f1f1;
 }
 
 /* Show the dropdown menu on hover */
@@ -287,7 +294,27 @@
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {
-  background-color: #d8b9ff;
+  background-color: #a7c6be;
+}
+
+.logout {
+  height: 30px;
+  width: 100px;
+  border-radius: 20px;
+  font-size: 15px;
+  background-color: #bcd3cd;
+  border: 3px solid #7faa9f;
+  /* position: relative;
+  right: 3px;
+  bottom: 8px; */
+}
+
+.logout:hover {
+  background-color: #a7c6be;
+}
+
+.enter {
+  border-radius: 5px;
 }
 
 @media only screen and (max-width: 768px) {

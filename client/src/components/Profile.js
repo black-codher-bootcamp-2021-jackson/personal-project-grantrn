@@ -35,6 +35,10 @@ const Profile = ({
     wantRead.length === 0 && setWantRead(user.user.wantToRead);
   }, []);
 
+  const logout = () => {
+    window.location.reload();
+  };
+
   return (
     <>
       <div className="list list-current">
@@ -111,6 +115,9 @@ const Profile = ({
         <h4 className="subtitle">Read stats for {user.user.username}</h4>
         {/* <Doughnut data={data} /> */}
       </div>
+      <button className="logout" onClick={logout}>
+        Logout
+      </button>
     </>
   );
 };

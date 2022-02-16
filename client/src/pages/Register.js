@@ -13,6 +13,7 @@ const Register = () => {
   const navigate = useNavigate();
 
   const handleClick = async (e) => {
+    console.log("register btton");
     e.preventDefault();
     if (passwordAgain.current.value !== password.current.value) {
       passwordAgain.current.setCustomValidity("Passwords do not match");
